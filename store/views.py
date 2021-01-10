@@ -1,9 +1,16 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 
 def store(request):
-    context = {}
+    products = Product.objects.all()
+    context = {'products': products}
     return render(request, 'store/store.html', context)
 
 def cart(request):
