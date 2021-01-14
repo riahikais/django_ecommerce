@@ -63,7 +63,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var total = '{{order.get_cart_total | floatformat:3 }}'
+    var total = '{{order.get_cart_total}}'
     var form = document.getElementById('form')
 
     if (user != 'AnonymousUser'){
@@ -88,10 +88,10 @@
             'total': total
         }
         var shippinginfo = {
-            'address': null,
-            'city': null,
-            'state': null,
-            'zipcode': null
+            'address': form.address.value,
+            'city': form.city.value,
+            'state': form.state.value,
+            'zipcode': form.zipcode.value
         }
 
         if (user == 'AnonymousUser'){
@@ -104,6 +104,7 @@
             method: 'POST',
             header:{
                 'content-type' : 'application/json',
+                'charset' : 'utf-8',
                 'X-CSTFToken' : csrftoken
             },
             body:JSON.stringify({'form': userFormData,'shipping':shippinginfo})
