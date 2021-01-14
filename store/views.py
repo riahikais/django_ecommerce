@@ -5,6 +5,8 @@ from django.http import JsonResponse
 # import the logging library
 import logging
 import json
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -50,7 +52,6 @@ def checkout(request):
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/checkout.html', context)
 
-from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def updateItem(request):
@@ -75,5 +76,7 @@ def updateItem(request):
         orderItem.delete()
     return JsonResponse('Item was added', safe=False)
 
+@csrf_exempt
 def processOrder(request):
+    print('Data : ', request.body)
     return JsonResponse('Payment submitted..', safe=False)
