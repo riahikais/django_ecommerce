@@ -5,6 +5,7 @@ from django.http import JsonResponse
 # import the logging library
 import logging
 import json
+import datetime
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -78,5 +79,8 @@ def updateItem(request):
 
 @csrf_exempt
 def processOrder(request):
-    print('Data : ', request.body)
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
+
+
     return JsonResponse('Payment submitted..', safe=False)
