@@ -63,10 +63,12 @@
     </div>
 </div>
 <script type="text/javascript">
+    var form = document.getElementById('form')
+
     if (user != 'AnonymousUser'){
         document.getElementById('user-info').innerHTML = ''
     }
-    var form = document.getElementById('form')
+
     form.addEventListener('submit',function (e) {
         e.preventDefault()
         console.log('Form Submitted...')
