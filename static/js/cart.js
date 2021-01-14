@@ -17,7 +17,7 @@ for (i = 0; i < updatesBtns.length; i++){
 function updateUserOrder(productId, action) {
     console.log('User is authenticated, sending data...')
 
-    var url = '/update_item'
+    var url = '/update_item/'
     fetch(url, {
         method: 'POST',
         header:{
@@ -29,6 +29,7 @@ function updateUserOrder(productId, action) {
     }).then((response)=>{
         return response.json()
     }).then((data)=>{
-        //location.reload()
+        console.log('data :', data)
+        location.reload()
     })
 }
