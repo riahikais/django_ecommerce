@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .utils import cookieCart
+from .utils import cookieCart , cartData
 from django.http import JsonResponse
 # Create your views here.
 # import the logging library

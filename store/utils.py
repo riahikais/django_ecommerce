@@ -29,3 +29,6 @@ def cookieCart(request):
     except:
         pass
     return {'cartItems': cartItems, 'order': order, 'items': items}
+
+def cartData(request):
+    return {}
