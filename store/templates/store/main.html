@@ -45,9 +45,15 @@
         }
         console.log('Cart : ', cart)
     </script>
+    <style>
+        .btn{
+            border-radius: 5px !important;
+        }
+
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-2" style="background-color: #404344!important;">
     <a class="navbar-brand" href="{% url 'store' %}">eCommerce</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -72,7 +78,7 @@
 
             <a href="{% url 'logout' %}" id="logout-btn" class="btn btn-warning " style="margin-left: 17px;">Logout</a>
 
-            <a href="{% url 'login' %}" id="login-btn" class="btn btn-warning" style="margin-left: 17px;">Login</a>
+            <a href="{% url 'login' %}" id="login-btn" class="btn btn-outline-light" style="margin-left: 17px;">Login</a>
         </div>
     </div>
 </nav>
