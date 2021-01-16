@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-6">
-        <div class="box-element" id="form-wrapper">
+        <div class="box-element" id="form-wrapper" style="box-shadow: #fff 0 0 16px!important;">
             <form id="form">
                 <div id="user-info">
                     <div class="form-field">
@@ -40,28 +40,36 @@
         <br>
         <div class="box-element hidden" id="payment-info">
             <small>Paypal Options</small>
+            <hr>
             <div id="paypal-button-container"></div>
 
-            <button id="make-payment"> Make payment</button>
+            <button id="make-payment" type="button" class="btn btn-primary btn-lg btn-block"> Make payment</button>
         </div>
     </div>
 
     <div class="col-lg-6">
-        <div class="box-element">
+        <div class="box-element" style="box-shadow: #fff 0 0 16px!important;">
             <a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
             <hr>
-            <h3>Order Summary</h3>
+            <h3 style="font-weight: 300;">Order Summary <h5 >Total:   {{order.get_cart_total | floatformat:3}} DT</h5></h3>
             <hr>
             {% for item in items %}
             <div class="cart-row">
-                <div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+                <div style="flex:2 ;position: relative;
+                            height: 80px;
+                            overflow: hidden;">
+                    <img style="width: 90%;
+                                height: auto;
+                                position: absolute;
+                                left: 0;
+                                top: -50%;" src="{{item.product.imageURL}}"></div>
                 <div style="flex:2"><p>{{item.product.name}}</p></div>
                 <div style="flex:1"><p>{{item.product.price}}</p></div>
                 <div style="flex:1"><p>x{{item.quantity}}</p></div>
             </div>
             {% endfor%}
-            <h5>Items:  {{order.get_cart_items}}</h5>
-            <h5>Total:   {{order.get_cart_total | floatformat:3}} DT</h5>
+            <!--<h3>Items:  {{order.get_cart_items}}</h3>
+            <h3>Total:   {{order.get_cart_total | floatformat:3}} DT</h3>-->
         </div>
     </div>
 </div>
