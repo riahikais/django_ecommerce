@@ -99,15 +99,15 @@ def processOrder(request):
     return JsonResponse('Payment submitted..', safe=False)
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = CreateUserForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account was created for ' + user)
             return redirect('login')
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'store/registration.html', context)
 
 def loginPage(request):
